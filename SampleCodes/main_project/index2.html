@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Checkbox</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .checkbox-container input[type="checkbox"] {
+      display: none; /* Hide the default checkbox */
+    }
+    .custom-checkbox {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #555;
+      border-radius: 4px;
+      background-color: white;
+      display: inline-block;
+      position: relative;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+    .checkbox-container input[type="checkbox"]:checked + .custom-checkbox {
+      background-color: #4caf50;
+      border-color: #4caf50;
+    }
+    .custom-checkbox::after {
+      content: '';
+      width: 10px;
+      height: 5px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      transform: rotate(45deg);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .checkbox-container input[type="checkbox"]:checked + .custom-checkbox::after {
+      opacity: 1;
+    }
+    .checkbox-label {
+      margin-left: 8px;
+    }
+  </style>
+</head>
+<body>
+  <label class="checkbox-container">
+    <input type="checkbox" id="myCheckbox">
+    <span class="custom-checkbox"></span>
+    <span class="checkbox-label">Check this box</span>
+  </label>
+</body>
+</html>
